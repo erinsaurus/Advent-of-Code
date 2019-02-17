@@ -3,6 +3,19 @@
 #include <iostream>
 using namespace std;
 
+// add elements of vector sequentially
+int calculate(vector<int> input)
+{
+	int total = input.front(); // starting element
+
+	for (int i = 1; i < input.size(); i++)
+	{
+		total = total + input.at(i);
+	}
+
+	return total;
+}
+
 int main()
 {
 	// setup file system
@@ -10,25 +23,25 @@ int main()
 	int x;
 	ifstream inputFile;
 
-	// open file
 	inputFile.open("input.txt");
 
 	if (!inputFile)
 	{
 		cout << "Unable to open file.\n";
 	}
-	else
-	{
-		cout << "File open successful!\n";
-		inputFile.close();
-	}
 	
+	// add file data to vector
+	while (inputFile >> x)
+	{
+		input.push_back(x);
+	}
 
+	inputFile.close();
 
-
-	// perform calculations
+	int total = calculate(input);
 
 	// output frequency
+	cout << "Frequency: " << total << "\n";
 
 	return 0;
 }
