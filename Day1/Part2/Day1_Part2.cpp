@@ -4,16 +4,47 @@
 using namespace std;
 
 // add elements of vector sequentially
-int calculate(vector<int> input)
+int findDuplicate(vector<int> input)
 {
-	int total = input.front(); // starting element
+	vector<int> results;
+	bool found = false;  // set true if duplicate frequency found
+	int frequency = 0;
+	int duplicate;
+	int x = 0;
 
-	for (int i = 1; i < input.size(); i++)
+	while (!found)
 	{
-		total = total + input.at(i);
+		cout << "Iteration: " << x << "\n";
+		// calculate frequencies
+		for (int i = 0; i < input.size(); i++)
+		{
+			frequency = frequency + input.at(i);
+		//	cout << "Current frequency: " << frequency << "\n";
+
+			// loop through results to find a duplicate
+			for (int j = 0; j < results.size(); j++)
+			{
+				if (frequency == results.at(j))
+				{
+					duplicate = frequency;
+					found = true;
+					cout << "found it! " << duplicate << "\n";
+				}
+			}		
+			// add to results vector if not found
+			if (!found)
+			{
+			//	cout << "Not found yet.\n";
+				results.push_back(frequency);
+			}
+			else
+				break; //break loop if found
+		}
+
+		x++;
 	}
 
-	return total;
+	return duplicate;
 }
 
 int main()
@@ -38,10 +69,10 @@ int main()
 
 	inputFile.close();
 
-	int total = calculate(input);
+	int duplicate = findDuplicate(input);
 
 	// output frequency
-	cout << "Frequency: " << total << "\n";
+	cout << "First frequency reached twice: " << duplicate << "\n";
 
 	return 0;
 }
