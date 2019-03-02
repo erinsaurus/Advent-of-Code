@@ -1,2 +1,4 @@
 # Advent-of-Code
-Advent of Code Challenges
+2018 Advent of Code Challenges
+
+Just for fun! Using primarily C++
