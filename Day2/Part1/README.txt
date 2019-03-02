@@ -1,4 +1,4 @@
-Day 2 Part 1 - Inventory Management System
+Day 2 - Inventory Management System
 
 You scan the likely candidate boxes, counting the number that have an ID containing exactly two of any letter and then separately counting those with exactly three of any letter. You can multiply those two counts together to get a rudimentary checksum and compare it to what your device predicts.
 
