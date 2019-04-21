@@ -1,7 +1,7 @@
     
-# Day 2 of Advent of Code 2018
+# Day 2 Part 2 of Advent of Code 2018
 # Inventory Management System
-# What is the checksum of the list of box IDs?
+# What IDs differ by 1 character at the same position in both strings?
 
 from collections import Counter
 
@@ -13,12 +13,11 @@ data.close()
 count = [0, 0]
 
 for i in boxIDs:
-    search = [j for i, j in Counter(i).most_common()]
-    if 3 in search:
-        count[0] += 1
-    if 2 in search:
-        count[1] += 1
-count
-
-solution = (count[0] * count[1])
-print (solution)
+        for j in boxIDs:
+            diffs = 0
+            for idx, ch in enumerate(i):
+                if ch != j[idx]:
+                    diffs += 1
+            if diffs == 1:
+                ans = [ch for idx, ch in enumerate(i) if j[idx] == ch]
+                print("Part Two:", ''.join(ans))
